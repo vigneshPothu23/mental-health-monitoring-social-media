@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emotion & Sarcasm Detection</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🎭 Emotion & Sarcasm Detection</h1>
+
+    <!-- Input Form -->
+    <form method="POST">
+        <textarea name="text" placeholder="Enter text with emojis..." required>{{ text }}</textarea>
+        <br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <!-- Emotion Result -->
+    {% if prediction %}
+    <div class="result {{ prediction }}">
+        <h2>{{ emoji }} {{ prediction | capitalize }}</h2>
+        <p><strong>Emotion Confidence:</strong> {{ confidence }}%</p>
+    </div>
+    {% endif %}
+
+    <!-- Sarcasm Result -->
+    {% if sarcasm %}
+    <div class="sarcasm-result">
+        {% if sarcasm == "sarcastic" %}
+            <p style="color:red;"><strong>⚠️ Sarcasm Detected</strong> ({{ sarcasm_confidence }}%)</p>
+            <p><em>Emotion may be masked due to sarcasm</em></p>
+        {% else %}
+            <p style="color:green;"><strong>✅ Not Sarcastic</strong> ({{ sarcasm_confidence }}%)</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Emotion Confidence Bars -->
+    {% if scores %}
+    <h3>📊 Emotion Confidence Breakdown</h3>
+
+    <div class="bars">
+        {% for item in scores %}
+        <div class="bar-row">
+            <span class="label">{{ item[0] }}</span>
+            <div class="bar">
+                <div class="fill" style="width: {{ item[1] }}%"></div>
+            </div>
+            <span class="score">{{ item[1] }}%</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Chart -->
+    <canvas id="confidenceChart"></canvas>
+
+    <script>
+        const labels = {{ scores | map(attribute=0) | list | safe }};
+        const values = {{ scores | map(attribute=1) | list | safe }};
+
+        const ctx = document.getElementById("confidenceChart").getContext("2d");
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Confidence (%)",
+                    data: values,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
