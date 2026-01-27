@@ -1,5 +1,5 @@
-# 🧠 Mental Health Monitoring on Social Media  
-### Using Emotion and Sarcasm Detection
+# 🧠 Mental Health Monitoring on Social Media
+### An NLP System Combining Emotion and Sarcasm Signals for Context-Aware Analysis
 
 ---
 
