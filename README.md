@@ -34,7 +34,7 @@ By separating emotion and sarcasm modeling while combining their outputs at the 
 
 The core logic of the system is implemented across **three Jupyter notebooks**:
 
-- `01_data_loading-restored.ipynb` – data preparation and preprocessing  
+- `01_data_preprocessing_and_emotion_pipeline.ipynb` – data preparation and preprocessing  
 - `02_sarcasm_detection.ipynb` – sarcasm classification pipeline  
 - `03_fusion_inference.ipynb` – fusion logic and final inference  
 
@@ -53,21 +53,20 @@ These notebooks collectively define the **end-to-end learning and inference work
 
 ## 🛠️ Tech Stack
 
-- Python  
-- Transformers (DistilBERT)  
-- Scikit-learn  
-- Pandas, NumPy  
-- Flask  
-- Jupyter Notebook  
+- **Programming Language:** Python  
+- **NLP & ML:** Transformers (DistilBERT), Scikit-learn  
+- **Data Processing:** Pandas, NumPy  
+- **Application Layer:** Flask  
+- **Experimentation:** Jupyter Notebook  
 
 ---
 
 ## 🎯 Potential Applications
 
-- Mental health trend monitoring  
-- Social media behavior analysis  
-- Emotion–sarcasm interaction studies  
-- NLP system design demonstrations  
+- Large-scale mental health trend monitoring from public social media data  
+- Behavioral pattern analysis and sentiment dynamics on online platforms  
+- Studying the interaction between emotion and sarcasm in NLP systems  
+- Demonstrating end-to-end NLP system design, from modeling to deployment  
 
 ---
 
@@ -80,7 +79,10 @@ Computer Science | Machine Learning & NLP
 
 
 
-\## Note
+## 📌 Note
+
+Datasets, training splits, and trained models are intentionally excluded from this repository.
+
 
 Datasets, training splits, and trained models are intentionally excluded
 
