@@ -84,9 +84,6 @@ Computer Science | Machine Learning & NLP
 Datasets, training splits, and trained models are intentionally excluded from this repository.
 
 
-Datasets, training splits, and trained models are intentionally excluded
-
-from this repository.
 
 
 
